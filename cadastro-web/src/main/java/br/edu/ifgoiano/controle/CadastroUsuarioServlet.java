@@ -36,6 +36,7 @@ public class CadastroUsuarioServlet extends HttpServlet {
 			usu.setNome(req.getParameter("nome"));
 			usu.setEmail(req.getParameter("email"));
 			usu.setSenha(senha1);
+			usu.getId();
 			
 			lstDeUsuario.add(usu);
 			
@@ -46,17 +47,18 @@ public class CadastroUsuarioServlet extends HttpServlet {
 			req.getRequestDispatcher("usuarioCadastro.jsp").forward(req, resp);
 		}
 		
-		req.setAttribute("nome", "valor");
-		
-		req.getAttribute("nome");
-	}
+		}
 	
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		for (Usuario usuario : lstDeUsuario) {
+		/*for (Usuario usuario : lstDeUsuario) {
 			System.out.println(usuario.getNome().concat(" - ").concat(usuario.getEmail()));
-		}
+		}*/
+		
+			req.setAttribute("listaUsu", lstDeUsuario);
+		
+			req.getRequestDispatcher("usuarioListagem.jsp").forward(req, resp);
 	}
 	
 	@Override
