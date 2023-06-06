@@ -5,6 +5,10 @@
 <head>
 <meta charset="utf-8">
 <title>Insert title here</title>
+
+<!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
 </head>
 <style>
 table, tr, td {
@@ -28,11 +32,11 @@ td{
 			<th>Nome Usuários</th>
 			<th>Email Usuários</th>
 		</tr>
-		<c:forEach var="usu" items="${listaUsu}">
-			<tr>
+		<c:forEach var="usu" varStatus="id" items="${listaUsu}" >
+			<tr class="${id.count % 2 == 0 ? 'table-primary' : 'table-secondary' }">
 				<td>${usu.id}</td>
 				<td>${usu.nome}</td>
-				<td>${usu.email}</td>
+				<td> <a href="mailto:${usu.email">${usu.email}</a></td>
 			</tr>
 		</c:forEach>
 	</table>
