@@ -99,7 +99,7 @@ background-color: #f8f8f8;
 <div class="a6">
 <br>
 
-
+<form action="serviço" method="post">
 <div class="a2">
 <label for="email">E-mail:</label>
 <select name="email" id="email">
@@ -115,7 +115,7 @@ background-color: #f8f8f8;
 <br>
 
 <div class="a3">
-<form action="serviço" method="post">
+
 <input type="radio" id="formal" name="cump" value="formal" checked>
 <label for="html">Cumprimento Formal</label> 
 
@@ -137,32 +137,35 @@ background-color: #f8f8f8;
 
 <div class="a5" >
 <label for="titulo">Título:</label>
-<input type="text" id="titulo" name="titulo" class="t">
+<input type="text" id="titulo" name="titulo" class="t" required="required">
+
 
 
 <br>
 <br>
 
 <label for="texto">Texto:</label>
-<input type="text" id="texto" name="texto" class="c">
+<input type="text" id="texto" name="texto" class="c" required="required">
 
 </div>
   <br>
   <br>
  
  <input type="submit" value="Enviar" class="b">
+ 
 </form>
 </div>
 
-<!-- 
- <c:if test="${empty param.titulo}">
+
+ <!-- <c:if test="${not empty param.titulo || not empty param.texto}">
  	<hr>
 			<div class="alert alert-danger" role="alert">
 				<span>Nenhum título foi escrito!!</span>
 			</div>		
  </c:if>
  
- -->  
+ -->
+ 
  
 </body>
 </html>

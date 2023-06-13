@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.edu.ifgoiano.entidade.Usuario;
-
+import java.time.LocalTime;
 @WebServlet("/serviço")
 public class Serviço extends HttpServlet {
 
@@ -42,26 +42,40 @@ public class Serviço extends HttpServlet {
 		String automatico = req.getParameter("auto");
 		String email = "Bom dia" ;
 		
+		LocalTime horario = LocalTime.now();
+		int horasAgora = horario.getHour();
+		
+		
+		
+		
 		if (cumprimento.equals("formal")) {
 		  email = "Prezada(o),";
 		} else if (cumprimento.equals("cumpHorario")) {
-			email = "A";
+			if (horasAgora >= 5 && horasAgora < 12) {
+				email = "Bom Dia";
+			} else if (horasAgora >=12 && horasAgora < 19) {
+				email = "Boa Tarde";
+			} else {
+				email = "Boa Noite";
+			}
 		}
 		
 		//if (automatico.equals("automatico")) {
 			automatico = "Atenção: esse é um e-mail automático e não deve ser respondido";
 		//}
 		
+	
+			
 		System.out.println(email+ "\r\n \r\n"  + titulo +  "\r\n \r\n"  + texto + "\r\n \r\n" + automatico );
 		
 		
 		
 		
-		/*if (titulo.isEmpty()) {
+		if (titulo.trim().isEmpty() || texto.trim().isEmpty()) {
 			req.getRequestDispatcher("index.jsp").forward(req, resp);
 		} else {
 			resp.sendRedirect("EmailEnviado.jsp");
-		}*/
+		}
 	}
 	
 }
