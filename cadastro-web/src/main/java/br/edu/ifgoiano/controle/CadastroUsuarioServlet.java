@@ -1,6 +1,7 @@
 package br.edu.ifgoiano.controle;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.edu.ifgoiano.entidade.Usuario;
+import br.edu.ifgoiano.repositorio.UsuarioRepositorio;
 
 @WebServlet("/cadastrarUsuario")
 public class CadastroUsuarioServlet extends HttpServlet {
@@ -38,6 +40,8 @@ public class CadastroUsuarioServlet extends HttpServlet {
 			usu.setSenha(senha1);
 			usu.getId();
 			
+			UsuarioRepositorio repositorio = new UsuarioRepositorio();
+			
 			lstDeUsuario.add(usu);
 			
 			//redirecionar o usuário para a página de login
@@ -63,7 +67,11 @@ public class CadastroUsuarioServlet extends HttpServlet {
 	
 	@Override
 	public void destroy() {
-		this.lstDeUsuario.clear();
+		try {
+			UsuarioRepositorio.conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 }
 
