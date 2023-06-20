@@ -60,6 +60,9 @@ public class CadastroUsuarioServlet extends HttpServlet {
 			System.out.println(usuario.getNome().concat(" - ").concat(usuario.getEmail()));
 		}*/
 		
+		UsuarioRepositorio usuRep = new UsuarioRepositorio();
+		
+		
 			req.setAttribute("listaUsu", lstDeUsuario);
 		
 			req.getRequestDispatcher("usuarioListagem.jsp").forward(req, resp);
