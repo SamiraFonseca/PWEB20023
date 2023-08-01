@@ -11,33 +11,22 @@ import java.util.List;
 import br.edu.ifgoiano.entidade.Usuario;
 
 public class UsuarioRepositorio {
-	
-	public static Connection conn;
-	
-	public UsuarioRepositorio() {
-		 try { // tratando o erro aqui, se fosse throw mandaria pra tratar o erro lá de onde veio
-			Connection conn = DriverManager.
-					 getConnection("jdbc:h2:~/usuariodb", "sa", "sa");
-			
-			System.out.println("Deu certo, conexão realizada com sucesso!");
-		} catch (SQLException e) {
-			System.out.println("Erro na conexão com o banco de dados.");
-			e.printStackTrace();
-		}
+
+	private Connection getConnection() throws SQLException {
+		return DriverManager.getConnection("jdbc:h2:~/usuariodb", "sa", "sa");
 	}
 
-
-
-	public List<Usuario> listaUsuarios(){
+	public List<Usuario> listarUsuarios() {
 		List<Usuario> lstusuarios = new ArrayList<Usuario>();
-	
+
 		String sql = "select id, nome, email, senha, data_nascimento from usuario";
-	
-		try {
-			PreparedStatement pst = conn.prepareStatement(sql);
-			
+
+		try (Connection conn = this.getConnection(); // abrindo uma conexão
+				PreparedStatement pst = conn.prepareStatement(sql); //prepara o sql pra mim
+				) {
+
 			ResultSet resultSet = pst.executeQuery();
-			
+
 			while (resultSet.next()) {
 				Usuario usuario = new Usuario();
 				usuario.setId(resultSet.getInt("id"));
@@ -45,14 +34,41 @@ public class UsuarioRepositorio {
 				usuario.setEmail(resultSet.getString("email"));
 				usuario.setSenha(resultSet.getString("senha"));
 				usuario.setDataNascimento(resultSet.getDate("data_nascimento"));
-				
+
 				lstusuarios.add(usuario);
 			}
 		} catch (Exception e) {
 			System.out.println("Erro na consulta de usuários");
 			e.printStackTrace();
 		}
-		
+
 		return lstusuarios;
-}
 	}
+	
+	public void inserirUsuario(Usuario usuario){
+		//Criar a sql de insert
+		StringBuilder sql = new StringBuilder();
+		sql.append("insert into usuario ");
+		sql.append("(nome, email, senha, data_nascimento) ");
+		sql.append("values(?, ?, ?, ?) ");
+		
+		//Abrir uma conexão
+		try(Connection conn = this.getConnection();
+				PreparedStatement pst = conn.prepareStatement(sql.toString())) {
+			pst.setString(1, usuario.getNome());
+			pst.setString(1, usuario.getEmail());
+			pst.setString(1, usuario.getSenha());
+			//pst.setString(1, usuario.getDataNascimento());
+			
+			pst.execute();
+			
+			conn.commit();
+			
+		} catch (SQLException e) {
+			System.out.println("Erro na inclusão de usuarios");
+			e.printStackTrace();
+		}
+		//Preparar a sql para ser executada
+		
+	}
+}
