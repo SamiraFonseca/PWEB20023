@@ -19,11 +19,11 @@ public class UsuarioRepositorio {
 	public List<Usuario> listarUsuarios() {
 		List<Usuario> lstusuarios = new ArrayList<Usuario>();
 
-		String sql = "select id, nome, email, senha, data_nascimento from usuario";
+		String sql = "select id, nome, email, senha from usuario";
 
 		try (Connection conn = this.getConnection(); // abrindo uma conexão
-				PreparedStatement pst = conn.prepareStatement(sql); //prepara o sql pra mim
-				) {
+				PreparedStatement pst = conn.prepareStatement(sql); // prepara o sql pra mim
+		) {
 
 			ResultSet resultSet = pst.executeQuery();
 
@@ -33,7 +33,7 @@ public class UsuarioRepositorio {
 				usuario.setNome(resultSet.getNString("nome"));
 				usuario.setEmail(resultSet.getString("email"));
 				usuario.setSenha(resultSet.getString("senha"));
-				usuario.setDataNascimento(resultSet.getDate("data_nascimento"));
+
 
 				lstusuarios.add(usuario);
 			}
@@ -44,31 +44,30 @@ public class UsuarioRepositorio {
 
 		return lstusuarios;
 	}
-	
-	public void inserirUsuario(Usuario usuario){
-		//Criar a sql de insert
+
+	public void inserirUsuario(Usuario usuario) {
+		// Criar a sql de insert
 		StringBuilder sql = new StringBuilder();
 		sql.append("insert into usuario ");
-		sql.append("(nome, email, senha, data_nascimento) ");
-		sql.append("values(?, ?, ?, ?) ");
-		
-		//Abrir uma conexão
-		try(Connection conn = this.getConnection();
-				PreparedStatement pst = conn.prepareStatement(sql.toString())) {
+		sql.append("(nome, email, senha) ");
+		sql.append("values(?, ?, ?) ");
+
+		// Abrir uma conexão
+		try (Connection conn = this.getConnection(); PreparedStatement pst = conn.prepareStatement(sql.toString())) {
 			pst.setString(1, usuario.getNome());
-			pst.setString(1, usuario.getEmail());
-			pst.setString(1, usuario.getSenha());
-			//pst.setString(1, usuario.getDataNascimento());
-			
+			pst.setString(2, usuario.getEmail());
+			pst.setString(3, usuario.getSenha());
+			// pst.setString(1, usuario.getDataNascimento());
+
 			pst.execute();
-			
+
 			conn.commit();
-			
+
 		} catch (SQLException e) {
 			System.out.println("Erro na inclusão de usuarios");
 			e.printStackTrace();
 		}
-		//Preparar a sql para ser executada
-		
+		// Preparar a sql para ser executada
+
 	}
 }

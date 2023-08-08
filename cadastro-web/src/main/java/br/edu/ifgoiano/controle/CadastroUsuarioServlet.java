@@ -29,11 +29,11 @@ public class CadastroUsuarioServlet extends HttpServlet {
 			Usuario usu = new Usuario();
 			usu.setNome(req.getParameter("nome"));
 			usu.setEmail(req.getParameter("email"));
-			usu.setSenha(senha1);
-			usu.getId();
+			usu.setSenha(req.getParameter("senha1"));
+
 			
 			UsuarioRepositorio repositorio = new UsuarioRepositorio();
-			repositorio.inserirUsuario(usuario);
+			repositorio.inserirUsuario(usu);
 			
 			
 			//redirecionar o usuário para a página de login

@@ -28,15 +28,17 @@ td{
 
 	<table>
 		<tr>
-			<th>Id</th>
-			<th>Nome Usuários</th>
-			<th>Email Usuários</th>
+			<th>Id |</th>
+			<th>Nome Usuários |</th>
+			<th>Email Usuários |</th>
+			<th>#</th>
 		</tr>
-		<c:forEach var="usu" varStatus="id" items="${listaUsu}" >
+		<c:forEach var="usu" varStatus="id" items="${usuarios}" >
 			<tr class="${id.count % 2 == 0 ? 'table-primary' : 'table-secondary' }">
 				<td>${usu.id}</td>
 				<td>${usu.nome}</td>
 				<td> <a href="mailto:${usu.email}"> ${usu.email}</a> </td>
+				<td><a class="btn btn-success" href="atualizarUsuario.jsp">EDITAR</a></td>
 			</tr>
 		</c:forEach>
 	</table>
