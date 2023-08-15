@@ -9,21 +9,45 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
 </head>
+<style>
+
+div {
+	border:1px solid black;
+	background-color: lightgrey;
+}
+
+</style>
 <body>
 
 
-<div class="container-fluid"></div>
+<div class="container-fluid">
 		<h1>Atualizar Usuário</h1>
-		<form method="post" action="">
+		<br>
+		<form method="post" action="cadastrarUsuario">
+		<input type="hidden" name="id" value="${usuario.id}">
 			<label for="nome">Nome:</label>
-			<input type="text" name="nome" value="${nome}"><br><br>
+			<input type="text" name="nome" value="${usuario.nome}"><br><br>
 			<label for="email">E-mail:</label>
-			<input type="text" name="email" value="${email}"><br><br>
+			<input type="text" name="email" value="${usuario.email}"><br><br>
 			<label for="senha1">Senha:</label>
-			<input type="password" name="senha">
+			<input type="password" name="senha"><br><br>
+			<label for="senha2">Senha confirmada:</label>
+			<input type="password" name="senha2">
 			<hr>
 			<input type="submit" value="Salvar" class="btn btn-primary">
+			<a class="btn btn-secondary" href="cadastrarUsuario" role="button">Voltar</a>
 		</form>
+</div>	
+
+	<c:if test="${not empty mensagem }">
+		<hr>
+		<div class="alert alert-danger" role="alert">
+		<spam>${mensagem}</spam>
+		</div>
+	
+	</c:if>	
+
+		
 
 </body>
 </html>
