@@ -30,6 +30,34 @@ public class AlterarUsuarioServlet extends HttpServlet {
 		req.getRequestDispatcher("usuarioAlteracao.jsp").forward(req, resp);
 	}
 
-	
+	@Override
+	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String senha1 = req.getParameter("senha1");
+		String senha2 = req.getParameter("senha2");
+		
+		//Verificar se as senhas são iguais
+		if(senha1.equals(senha2)) {
+			Usuario usu = new Usuario();
+			usu.setId(Integer.valueOf(req.getParameter("id")));
+			usu.setNome(req.getParameter("nome"));
+			usu.setEmail(req.getParameter("email"));
+			usu.setSenha(req.getParameter("senha1"));
+
+			
+			UsuarioRepositorio repositorio = new UsuarioRepositorio();
+			repositorio.alterarUsuario(usu);
+			
+			
+			//redirecionar o usuário para a página de login
+			resp.sendRedirect("cadastrarUsuario");
+		}else {
+			String msg = "As senhas não são iguais!!";
+			req.setAttribute("mensagem", msg);
+			
+			//redirecionar o usuário para a mesma página de cadastro do usuário.
+			req.getRequestDispatcher("usuarioAlteracao.jsp").forward(req, resp);
+		}
+		
+		}
 
 }

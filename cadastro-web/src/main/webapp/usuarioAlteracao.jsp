@@ -23,18 +23,19 @@ div {
 <div class="container-fluid">
 		<h1>Atualizar Usuário</h1>
 		<br>
-		<form method="post" action="cadastrarUsuario">
-		<input type="hidden" name="id" value="${usuario.id}">
+		<form method="post" action="alterarUsuario">
+		<input type="hidden" name="id" value="${usuario.id}"> <!-- Onde vai ser pegado o id para por no banco de dados -->
 			<label for="nome">Nome:</label>
 			<input type="text" name="nome" value="${usuario.nome}"><br><br>
 			<label for="email">E-mail:</label>
 			<input type="text" name="email" value="${usuario.email}"><br><br>
 			<label for="senha1">Senha:</label>
-			<input type="password" name="senha"><br><br>
+			<input type="password" name="senha1"><br><br>
 			<label for="senha2">Senha confirmada:</label>
 			<input type="password" name="senha2">
 			<hr>
 			<input type="submit" value="Salvar" class="btn btn-primary">
+			
 			<a class="btn btn-secondary" href="cadastrarUsuario" role="button">Voltar</a>
 		</form>
 </div>	
