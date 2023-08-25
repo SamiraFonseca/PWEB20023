@@ -11,7 +11,7 @@ import br.edu.ifgoiano.entidade.Usuario;
 import br.edu.ifgoiano.repositorio.UsuarioRepositorio;
 
 
-@WebServlet("/ExcluirUsuarioServlet")
+@WebServlet("/excluirUsuario")
 public class ExcluirUsuarioServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -20,7 +20,7 @@ public class ExcluirUsuarioServlet extends HttpServlet {
 	
 		Integer id = Integer.parseInt(req.getParameter("id"));
 		
-		Usuario usuario = new Usuario();
+		Usuario usuario = new Usuario(id);
 		
 		UsuarioRepositorio repositorio = new UsuarioRepositorio();
 		repositorio.excluirUsuario(usuario);

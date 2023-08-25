@@ -12,7 +12,11 @@ private static Integer incremento = 1;
 	private String nome;
 	private Date dataNascimento;
 
-	
+	public Usuario(Integer id) {
+		super();
+		this.id = id;
+	}
+
 	public Usuario() {
 		this.id = incremento++;
 	}

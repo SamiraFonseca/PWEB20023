@@ -137,7 +137,7 @@ public class UsuarioRepositorio {
 	// -----------------------------------------------------------------------------------------------------------------------------------------------
 
 	public void excluirUsuario(Usuario usuario) {
-		String sql = "delete from usuario where id = ? ";
+		String sql = "delete from usuario where id = ?";
 
 		try (Connection conn = this.getConnection(); PreparedStatement pst = conn.prepareStatement(sql.toString())) {
 			pst.setInt(1, usuario.getId());
@@ -151,4 +151,8 @@ public class UsuarioRepositorio {
 			e.printStackTrace();
 		}
 	}
+	
+	
+	// -----------------------------------------------------------------------------------------------------------------------------------------------
+
 }
