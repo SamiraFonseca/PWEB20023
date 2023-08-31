@@ -16,7 +16,7 @@
 
 <!-- Favicon -->
 <link rel="icon" type="image/x-icon"
-	href="assets/img/favicon/favicon.ico" />
+	href="assets/img/favicon_io/favicon.ico" />
 
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -54,41 +54,44 @@
 	<div class="content-wrapper">
 		<div class="container-xxl flex-grow-1 container-p-y">
 			<div class="card">
-				<h5 class="card-header">Table Basic</h5>
+				<h5 class="card-header">Lista de Usuários</h5>
 				<div class="table-responsive text-nowrap">
 					<table class="table">
-
-						<tr>
-							<th>Id |</th>
-							<th>Nome Usuários |</th>
-							<th>Email Usuários |</th>
-							<th>#</th>
-							<th colspan="2">##</th>
-						</tr>
-
-
-						<c:forEach var="usu" varStatus="id" items="${usuarios}">
-							<tr
-								class="${id.count % 2 == 0 ? 'table-primary' : 'table-secondary' }">
-								<td>${usu.id}</td>
-								<td>${usu.nome}</td>
-								<td><a href="mailto:${usu.email}"> ${usu.email}</a></td>
-								<td><a class="btn btn-success"
-									href="alterarUsuario?id=${usu.id}">EDITAR</a></td>
-								<td><a class="btn btn-danger"
-									href="excluirUsuario?id=${usu.id}">EXCLUIR</a></td>
+						<thead>
+							<tr>
+								<th>Id |</th>
+								<th>Nome Usuários |</th>
+								<th>Email Usuários |</th>
+								<th>°</th>
+								<th colspan="2">°°</th>
 							</tr>
-						</c:forEach>
-
+						</thead>
+						<tbody class="table-border-bottom-0">
+							<c:forEach var="usu" varStatus="id" items="${usuarios}">
+								<tr>
+									<td>${usu.id}</td>
+									<td>${usu.nome}</td>
+									<td><a href="mailto:${usu.email}"> ${usu.email}</a></td>
+									<td><a class="btn btn-success"
+										href="alterarUsuario?id=${usu.id}">EDITAR</a></td>
+									<td><a class="btn btn-danger"
+										href="excluirUsuario?id=${usu.id}">EXCLUIR</a></td>
+								</tr>
+							</c:forEach>
+						</tbody>
 
 					</table>
 				</div>
 			</div>
 		</div>
 	</div>
-
+	<style>
+	#m{
+	margin-left:25px;
+	}
+	</style>
 	<br>
-	<a href="usuarioCadastro.jsp">VOLTAR!</a>
+	<a id="m" href="index.html" class="btn btn-dark w-15">VOLTAR!</a>
 </body>
 </html>
 
