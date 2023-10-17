@@ -1,0 +1,19 @@
+{
+	“id” : null,	
+	“nome” : "Samira Silva Fonseca",
+	“email” : "samira.fonseca@estudante.ifgoiano.edu.br",
+	“crm” : "123456",
+	“especialidades” : “DERMATOLOGIA”,
+	“endereco” : {
+		“id” : null,
+		“logradouro” : “Rua dos Bobos”,
+		“Bairro” : “Crsitina”,
+		“complemento” : “Numero 0”,
+		“cep” : "1234567891",
+		“cidade” : “Tindade”,
+		“estado” : “Goias”
+	}
+}
+
+
+

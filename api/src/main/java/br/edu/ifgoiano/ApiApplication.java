@@ -1,4 +1,4 @@
-package br.edu.ifgoiano.api;
+package br.edu.ifgoiano;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
