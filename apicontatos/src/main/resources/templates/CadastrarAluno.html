@@ -1,0 +1,31 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Cadastrar</title>
+</head>
+
+
+<body>
+
+	<div class="container-fluid">
+		<h1>Cadastro Alunos</h1>
+		<form method="post" th:action="@{/aluno}"> <!-- Links -->
+			<label for="nome">Nome:</label>
+			<input type="text" name="nome">
+			<label for="email">E-mail:</label>
+			<input type="text" name="email"><br><br>
+			<label for="senha1">Senha:</label>
+			<input type="password" name="senha">
+			<input type="submit" value="Salvar" class="btn btn-primary">
+			<a href="/professor/cadastrarProf"><p>Professor? Cadastre-se aqui</p></a>
+			<a href="/lista">Lista de Contatos</a>
+		</form>
+
+	</div>
+</body>
+
+</html>

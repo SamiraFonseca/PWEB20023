@@ -1,0 +1,38 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lista</title>
+</head>
+
+<body>
+
+
+	<div>
+		<h1>Bem Vindo!! Aqui estão os contatos dos seus professores!!</h1>
+		<table th:if="${ListaProf} != null">
+			<thead>
+				<tr>
+					<th>Nome:</th>
+					<th>Email:</th>
+					<th>Area do Conhecimento:</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="prof: ${ListaProf}">
+					<td th:text="${prof.getNome()}"></td>
+					<td th:text="${prof.getEmail()}"></td>
+					<td th:text="${prof.getAreadoconhecimento()}"></td>
+				</tr>
+			</tbody>
+
+		</table>
+
+	</div>
+
+</body>
+
+</html>
