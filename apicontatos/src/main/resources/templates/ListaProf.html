@@ -26,9 +26,10 @@
 					<td th:text="${prof.getNome()}"></td>
 					<td th:text="${prof.getEmail()}"></td>
 					<td th:text="${prof.getAreadoconhecimento()}"></td>
+					<td><a th:href="'/professor/preEditar/' + ${prof.getEmail()}"><button>Editar</button></a></td>
+					<td><a th:href="'/professor/excluir/' + ${prof.getId()}"><button>Excluir</button></a></td>
 				</tr>
 			</tbody>
-
 		</table>
 
 	</div>

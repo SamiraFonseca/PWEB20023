@@ -6,4 +6,6 @@ import br.edu.ifgoiano.apicontatos.entity.Professor;
 
 public interface ProfessorRepository extends JpaRepository<Professor, Long>{
 
+	Professor findByEmail(String email);
+
 }
