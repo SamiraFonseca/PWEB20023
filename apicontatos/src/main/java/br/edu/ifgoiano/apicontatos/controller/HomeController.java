@@ -24,6 +24,9 @@ public class HomeController {
 	public String listagem (ModelMap mm) {
 		List<Professor> listagemprof = profRepo.findAll();
 		mm.addAttribute("ListaProf", listagemprof);
+		//mm.addAttribute("error", mm.getAttribute("error"));
 		return "ListaProf";
 	}
+	
+	
 }

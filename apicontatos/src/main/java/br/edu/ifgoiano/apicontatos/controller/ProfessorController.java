@@ -22,7 +22,6 @@ public class ProfessorController {
 
 	@PostMapping
 	public String registrarProf(Professor prof) {
-		
 		pfRepo.save(prof);
 		return "CadastrarProf";
 	}
@@ -53,12 +52,14 @@ public class ProfessorController {
 			pfRepo.save(editProf);
 			
 			return "redirect:/lista";
-		}
-		
-		m.addAttribute("error", "Erro ao alterar valores.");
-		
-		return "redirect:/lista";
+		} else {
+			
+			
+		   m.addAttribute("error", "Erro ao alterar valores.");
+			
+			return "redirect:/lista";
 
+		}
 	}
 	
 	@GetMapping ("/excluir/{id}")

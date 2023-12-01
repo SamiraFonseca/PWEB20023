@@ -10,15 +10,19 @@
 
 <body>
 
+<p th:text="${error}"></p>
+
 <form th:object="${prof}" method="post" th:action="@{/professor/editar}">
 
-<p th:if="${error != null}">[[${error}]]</p>
-
 <input type="hidden" th:field="*{nome}">
+
 <input type="password" th:field="*{senha}">
+
 <input type="hidden" th:field="*{id}">
+
 			<label for="email">E-mail:</label>
 			<input type="text" name="email" th:field="*{email}"><br><br>
+			
 			<select name="areadoconhecimento" th:field="*{areadoconhecimento}">
 			<option value="PORTUGUES">PORTUGUÊS</option>
 	<option value="MATEMATICA">MATEMÁTICA</option>
