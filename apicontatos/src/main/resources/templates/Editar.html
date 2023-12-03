@@ -2,52 +2,142 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastrar</title>
 </head>
+<style>
+    #d {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 35px;
+    }
 
+    #d1{
+        margin-top: 30px;
+        margin-left: 60px;
+    }
+
+    #d2{
+        margin-top: 30px;
+        margin-left: 60px;
+    }
+
+    #senha {
+        width: 150px;
+    }
+
+    #senha2 {
+        margin-right: 100px;
+    }
+
+    #email {
+        margin-left: 120px;
+        width: 150px;
+        
+    }
+
+    #email2 {
+
+        margin-left: 100px;
+    }
+
+    #area{
+        margin-top: 20px;
+        font-weight: bold;
+    }
+
+    #salvar{
+        margin-top: 40px;
+        margin-left: 150px;
+    }
+
+    h1{
+        margin-top: 80px;
+        margin-left: 90px;
+    }
+</style>
 <body>
 
-<p th:text="${error}"></p>
+<div id="d">
 
-<form th:object="${prof}" method="post" th:action="@{/professor/editar}">
+        <div class="d-flex justify-content-center">
+            <h1>EDITAR CONTATOS</h1>
+            
+            <p th:text="${error}"></p>
+            
+            
+            <form th:object="${prof}" method="post" th:action="@{/professor/editar}">
+            
+            <input type="hidden" th:field="*{nome}">
 
-<input type="hidden" th:field="*{nome}">
-
-<input type="password" th:field="*{senha}">
-
-<input type="hidden" th:field="*{id}">
-
-			<label for="email">E-mail:</label>
-			<input type="text" name="email" th:field="*{email}"><br><br>
-			
-			<select name="areadoconhecimento" th:field="*{areadoconhecimento}">
-			<option value="PORTUGUES">PORTUGUÊS</option>
-	<option value="MATEMATICA">MATEMÁTICA</option>
-	<option value="QUIMICA">QUÍMICA</option>
-	<option value="FISICA">FÍSICA</option>
-	<option value="GEOGRAFIA">GEOGRAFIA</option>
-	<option value="HISTORIA">HISTÓRIA</option>
-	<option value="EDUCACAOFISICA">EDUCAÇÃO FÍSICA</option>
-	<option value="INGLES">INGLÊS</option>
-	<option value="ESPANHOL">ESPANHOL</option>
-	<option value="FILOSOFIA">FILOSOFIA</option>
-	<option value="SOCIOLOGIA">SOCIOLOGIA</option>
-	<option value="ARTES">ARTES</option>
-	<option value="LOGICADEPROGRAMACAO">LOGICA DE PROGRAMACAO</option>
-	<option value="BANCODEDADOS">BANCO DE DADOS</option>
-	<option value="FOC">FOC</option>
-	<option value="LINGUAGEMDEPROGRAMACAO">LINGUAGEM DE PROGRAMACAO</option>
-	<option value="DAM">DAM</option>
-	<option value="PIA">PIA</option>
-	<option value="DAMA">DAMA</option>
-	<option value="PWEB">PWEB</option>
-			</select>
-			<input type="submit" value="Salvar" class="btn btn-primary">
-			
-</form>
+			<input type="hidden" th:field="*{id}">
 
 
+
+                <div id="d1" class="form-group row">
+                   <div class="col-xs-2">
+                        <label id="senha2" for="senha">SENHA</label>
+                        <input id="senha" class="form-control" type="password" th:field="*{senha}" name="senha">
+                    </div>
+                    <div class="col-xs-2">
+                        <label id="email2" for="email2">EMAIL</label>
+                        <input class="form-control" id="email" type="text" th:field="*{email}" name="email">
+                    </div>
+                </div>
+                <div id="d2">
+                    <div>
+                        <label id="area2">Area do Conhecimento:</label>
+                        <select class="form-select mt-3" id="area"  name="areadoconhecimento" th:field="*{areadoconhecimento}">
+                           <option value="PORTUGUES">PORTUGUÊS</option>
+                        <option value="MATEMATICA">MATEMÁTICA</option>
+                        <option value="QUIMICA">QUÍMICA</option>
+                        <option value="FISICA">FÍSICA</option>
+                        <option value="GEOGRAFIA">GEOGRAFIA</option>
+                        <option value="HISTORIA">HISTÓRIA</option>
+                        <option value="EDUCACAOFISICA">EDUCAÇÃO FÍSICA</option>
+                        <option value="INGLES">INGLÊS</option>
+                        <option value="ESPANHOL">ESPANHOL</option>
+                        <option value="FILOSOFIA">FILOSOFIA</option>
+                        <option value="SOCIOLOGIA">SOCIOLOGIA</option>
+                        <option value="ARTES">ARTES</option>
+                        <option value="LOGICADEPROGRAMAÇAO">LÓGICA DE PROGRAMAÇÃO</option>
+                        <option value="BANCODEDADOS">BANCO DE DADOS</option>
+                        <option value="FOC">FOC</option>
+                        <option value="LINGUAGEMDEPROGRAMACAO">LINGUAGEM DE PROGRAMAÇÃO</option>
+                        <option value="DAM">DAM</option>
+                        <option value="PIA">PIA</option>
+                        <option value="DAMA">DAMA</option>
+                        <option value="PWEB">PWEB</option>
+                        </select>
+
+                    </div>
+                    <div>
+                        <button id="salvar" type="submit" class="btn btn-success" value="Salvar">SALVAR</button>
+                    </div>
+                </div>
+
+
+            </form>
+
+
+
+
+
+
+
+
+        </div>
+
+    </div>
+
+
+    </div>
 </body>
+
+
