@@ -72,13 +72,14 @@
             <p th:text="${error}"></p>
             
             
-            <form th:object="${prof}" method="post" th:action="@{/professor/editar}">
+            <form th:object="${prof}" method="post" th:action="@{/professor/editar}"><!-- Diz para qual url será mandado os dados do formulário -->
             
             <input type="hidden" th:field="*{nome}">
 
 			<input type="hidden" th:field="*{id}">
 
-
+			<!-- Falando que os inputs referem-se ao objeto que foi mandado, 
+			ex: o input vai ser o valor do email da variável professor -->
 
                 <div id="d1" class="form-group row">
                    <div class="col-xs-2">

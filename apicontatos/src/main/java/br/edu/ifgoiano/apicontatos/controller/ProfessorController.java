@@ -14,24 +14,24 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import br.edu.ifgoiano.apicontatos.entity.Professor;
 import br.edu.ifgoiano.apicontatos.repository.ProfessorRepository;
 
-@Controller
-@RequestMapping("/professor")
+@Controller  /*Indicar ao Spring que essa classe referesse a um Controller*/
+@RequestMapping("/professor") /*Mapea o controler */
 public class ProfessorController {
 	@Autowired
 	ProfessorRepository pfRepo; 
 
-	@PostMapping
+	@PostMapping /*Metodo post*/
 	public String registrarProf(Professor prof) {
 		pfRepo.save(prof);
 		return "CadastrarProf";
 	}
 	
-	@GetMapping ("/cadastrarProf")
+	@GetMapping ("/cadastrarProf") /*Metodo get*/
 	public String cadastrarProf (){
 		return "CadastrarProf";
 	}
 	
-	@GetMapping ("/preEditar/{email}")
+	@GetMapping ("/preEditar/{email}") /*Metodo post*/
 	public String preEditar (@PathVariable String email, ModelMap m){
 		Professor prof = pfRepo.findByEmail(email);
 		
@@ -41,7 +41,9 @@ public class ProfessorController {
 		return "Editar";
 	}
 	
-	@PostMapping ("/editar")
+	@PostMapping ("/editar") /*Metodo post*/ /*Pesquisa o professor por id, verifica se a senha do objeto professor está correta,
+	 se for o código permite a edição e seta a area e o email, 
+	logo apos direciona para a página da lista de novo*/
 	public String Editar (Professor prof, RedirectAttributes m){
 		Professor editProf = pfRepo.findById(prof.getId()).get();
 		
@@ -63,7 +65,9 @@ public class ProfessorController {
 	}
 	
 	@GetMapping ("/excluir/{id}")
-	public String excluir (@PathVariable Long id, ModelMap m) {		
+	public String excluir (@PathVariable Long id, ModelMap m) {
+	/*Recebe o id que está na url, depois deleta por id, 
+	busca a lista novamente e a retorna*/
 		pfRepo.deleteById(id);
 		
 		List<Professor> listagemprof = pfRepo.findAll();

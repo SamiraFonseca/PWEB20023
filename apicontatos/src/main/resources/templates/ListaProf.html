@@ -37,6 +37,8 @@
             	<td  th:text="${prof.getEmail()}"></td>
             	<td th:text="${prof.getAreadoconhecimento()}"></td>
             	<td>
+            	
+            	<!-- Pegando o email e o id e colocando dentro da url -->
            			 <a th:href="'/professor/preEditar/' + ${prof.getEmail()}"><button id="b1" type="button" class="btn btn-success">Editar</button></a>
                 </td>
                 <td>

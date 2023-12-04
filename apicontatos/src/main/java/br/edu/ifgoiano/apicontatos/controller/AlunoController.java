@@ -17,6 +17,7 @@ public class AlunoController {
 	@Autowired
 	AlunoRepository alRepo; 
 
+	/*Métodos que recebem um aluno e salvam ele*/
 	@PostMapping
 	public String registrarAluno(Aluno al) {
 		alRepo.save(al);
